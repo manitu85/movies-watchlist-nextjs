@@ -7,12 +7,14 @@ import Carousel from '../components/carousel.component'
 import MovieList from '../components/movie-list.component'
 import Footer from '../components/footer.component'
 
-// import moduleName from 'module'
+import { MOVIES_DATA } from '../resources/data'
+
 
 
 const Home = () => {
 
   // const [state, setstate] = useState(initialState)
+  const movies = MOVIES_DATA;
 
   return (
     <>
@@ -23,7 +25,7 @@ const Home = () => {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossOrigin="anonymous"></script>
       </Head>
       <Navbar />
-      <body>
+      <div className="site-bg">
         <div className="container home-page-padding">
           <div className="row">
             <div className="col-lg-3">
@@ -32,12 +34,12 @@ const Home = () => {
             <div className="col-lg-9">
               <Carousel />
               <div className="row">
-                <MovieList />
+                <MovieList moviesData={movies}/>
               </div>
             </div>
           </div>
         </div>
-      </body>
+      </div>
       <Footer />
       <style jsx>
         { `
@@ -45,7 +47,7 @@ const Home = () => {
               padding-top: 3rem;
             }
 
-            body {
+            .site-bg {
               background-color: #1a2b34;
             }  
         ` }

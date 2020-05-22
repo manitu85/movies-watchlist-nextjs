@@ -1,4 +1,4 @@
-export const MOVIE_DATA = [
+export const MOVIES_DATA = [
   {
     id: '1',
     name: 'The Shawshank Redemption',
