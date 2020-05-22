@@ -7,6 +7,8 @@ import Carousel from '../components/carousel.component'
 import MovieList from '../components/movie-list.component'
 import Footer from '../components/footer.component'
 
+// import moduleName from 'module'
+
 
 const Home = () => {
 
@@ -21,24 +23,30 @@ const Home = () => {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossOrigin="anonymous"></script>
       </Head>
       <Navbar />
-      <div className="container home-page-padding">
-        <div className="row">
-          <div className="col-lg-3">
-            <Sidebar />
-          </div>
-          <div className="col-lg-9">
-            <Carousel />
-            <div className="row">
-              <MovieList />
+      <body>
+        <div className="container home-page-padding">
+          <div className="row">
+            <div className="col-lg-3">
+              <Sidebar />
+            </div>
+            <div className="col-lg-9">
+              <Carousel />
+              <div className="row">
+                <MovieList />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </body>
       <Footer />
       <style jsx>
         { `
             .home-page-padding {
               padding-top: 3rem;
+            }
+
+            body {
+              background-color: #1a2b34;
             }  
         ` }
       </style>
