@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Sidebar = () => (
+const Sidebar = (props) => (
   <>
-    <h1 className="mt-3">Shop Name</h1>
+    <h1 className="mt-3">{props.appName}</h1>
     <div className="list-group">
       <a href="#" className="list-group-item list-group-item-action">Category 1</a>
       <a href="#" className="list-group-item list-group-item-action">Category 2</a>
