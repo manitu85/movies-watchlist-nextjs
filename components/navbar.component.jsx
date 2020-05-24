@@ -1,10 +1,17 @@
 import react, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Container, Navbar, Nav, NavItem, NavLink, NavbarToggler, Collapse, Button } from 'reactstrap'
+import { 
+  Container, 
+  Navbar, 
+  Nav, 
+  NavItem, 
+  NavbarToggler, 
+  Collapse 
+} from 'reactstrap'
 
 const NavBar = () => {
-  const [collapsed, setCollapsed] = useState(true);
 
+  const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
 

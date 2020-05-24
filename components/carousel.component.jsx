@@ -1,32 +1,81 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {
+  Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselCaption
+} from 'reactstrap';
 
-const Carousel = () => (
-  <div id="carouselExampleIndicators" className="carousel slide my-4" data-ride="carousel">
-    <ol className="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div className="carousel-inner" role="listbox">
-      <div className="carousel-item active">
-        <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide" />
-      </div>
-      <div className="carousel-item">
-        <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide" />
-      </div>
-      <div className="carousel-item">
-        <img className="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide" />
-      </div>
-    </div>
-    <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span className="sr-only">Previous</span>
-    </a>
-    <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span className="carousel-control-next-icon" aria-hidden="true"></span>
-      <span className="sr-only">Next</span>
-    </a>
-  </div>
-)
+const items = [
+  {
+    id: 1,
+    src: "/business-cinema.jpg",
+    altText: 'Slide 1',
+    caption: 'Movie 1'
+  },
+  {
+    id: 2,
+    src: "/popcorn-movie.jpg",
+    altText: 'Slide 2',
+    caption: 'Movie 2'
+  },
+  {
+    id: 3,
+    src: "/art-camera.jpg",
+    altText: 'Slide 3',
+    caption: 'Movie 3'
+  }
+];
 
-export default Carousel
+const Slider = (props) => {
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  const next = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(nextIndex);
+  }
+
+  const previous = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    setActiveIndex(nextIndex);
+  }
+
+  const goToIndex = (newIndex) => {
+    if (animating) return;
+    setActiveIndex(newIndex);
+  }
+
+  const slides = items.map((item) => {
+    return (
+      <CarouselItem
+        onExiting={() => setAnimating(true)}
+        onExited={() => setAnimating(false)}
+        key={item.id}
+      >
+        <img src={item.src} alt={item.altText} />
+        <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+      </CarouselItem>
+    );
+  });
+
+  return (
+    <Carousel
+      activeIndex={activeIndex}
+      next={next}
+      previous={previous}
+      className='py-4'
+    >
+      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+        {slides}
+      <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+      <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+    </Carousel>
+  );
+}
+
+export default Slider
