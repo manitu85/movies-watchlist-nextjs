@@ -38,14 +38,6 @@ const App = ({ Component, pageProps }) => {
 export default App
 
 
-// execute getInitialProps and pass data to home component via props
-// App.getInitialProps = async (appContext) => {
 
-//   console.log('calls page getInitialProps and fills appProps.pageProps in _app');
-  
-//   const appProps = await App.getInitialProps(appContext)
-
-//   return { ...appProps }
-// }
 
 

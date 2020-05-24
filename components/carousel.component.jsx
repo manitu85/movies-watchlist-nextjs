@@ -31,34 +31,34 @@ const items = [
 const CarouselSlider = (props) => {
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   const next = () => {
-    if (animating) return;
+    if (animate) return;
     const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   }
 
   const previous = () => {
-    if (animating) return;
+    if (animate) return;
     const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   }
 
   const goToIndex = (newIndex) => {
-    if (animating) return;
+    if (animate) return;
     setActiveIndex(newIndex);
   }
 
   const slides = items.map((item) => {
     return (
       <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
+        onExiting={() => setAnimate(true)}
+        onExited={() => setAnimate(false)}
         key={item.id}
       >
         <img src={item.src} alt={item.altText} />
-        <CarouselCaption captionHeader={item.caption} />
+        <CarouselCaption captionHeader={item.caption} captionText={item.altText} />
       </CarouselItem>
     );
   });

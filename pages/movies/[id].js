@@ -4,12 +4,16 @@ import { Container, Jumbotron, Button } from 'reactstrap';
 import { getMovieById } from '../../actions'
 
 
-const Movie = props => {
+const Movies = props => {
   const router = useRouter()
-  const { id } = router.query
+  // const { id } = router.query
   const { movie } = props
   console.log('MOB', movie);
   
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
 
   return(
     <Container>
@@ -26,15 +30,28 @@ const Movie = props => {
   )
 }
 
-export async function getStaticPaths(context) {
-  const { id } = context.query
+
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { id: `...` } }
+      // { params: { id: '2' } },
+      // { params: { id: '3' } }
+    ],
+    fallback: true // See the "fallback" section below
+  };
+}
+
+export async function getStaticProps(context) {
+  const { id } = context.params
   const movie = await getMovieById(id)  // fetch movies
   return {
     props: { movie }, // will be passed to the pageProps
   }
 }
 
-export default Movie
+export default Movies
 
 
 
