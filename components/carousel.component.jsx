@@ -28,7 +28,7 @@ const items = [
   }
 ];
 
-const Slider = (props) => {
+const CarouselSlider = (props) => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -58,7 +58,7 @@ const Slider = (props) => {
         key={item.id}
       >
         <img src={item.src} alt={item.altText} />
-        <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+        <CarouselCaption captionHeader={item.caption} />
       </CarouselItem>
     );
   });
@@ -78,4 +78,4 @@ const Slider = (props) => {
   );
 }
 
-export default Slider
+export default CarouselSlider
