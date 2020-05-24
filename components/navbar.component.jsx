@@ -1,43 +1,49 @@
-import react from 'react'
+import react, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { Container, Navbar, Nav, NavItem, NavLink, NavbarToggler, Collapse, Button } from 'reactstrap'
 
-const Navbar = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <div className="container">
-      <Link href="/">
-        <a className="navbar-brand" >MOVIES DB</a>    
-      </Link>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarResponsive">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item active">
-            <Link href="/" >
-              <a className="nav-link">Home
-                <span className="sr-only">(current)</span>
-              </a>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link href="/about" >
-              <a className="nav-link">About</a>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link href="/services" >
-              <a className="nav-link">Services</a>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link href="/contact" >
-              <a className="nav-link">Contact</a>
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-)
+const NavBar = () => {
+  const [collapsed, setCollapsed] = useState(true);
 
-export default Navbar
+
+  const toggleNavbar = () => setCollapsed(!collapsed);
+
+  return (
+    <Navbar className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <Container>
+        <Link href="/">
+          <a className="navbar-brand" >MOVIES DB</a>
+        </Link>
+        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav className="navbar-nav ml-auto">
+            <NavItem className="nav-item active">
+              <Link href="/" >
+                <a className="nav-link">Home
+                  <span className="sr-only">(current)</span>
+                </a>
+              </Link>
+            </NavItem>
+            <NavItem className="nav-item">
+              <Link href="/about" >
+                <a className="nav-link">About</a>
+              </Link>
+            </NavItem>
+            <NavItem className="nav-item">
+              <Link href="/services" >
+                <a className="nav-link">Services</a>
+              </Link>
+            </NavItem>
+            <NavItem className="nav-item">
+              <Link href="/contact" >
+                <a className="nav-link">Contact</a>
+              </Link>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Container>
+    </Navbar>
+  )
+}
+
+export default NavBar
