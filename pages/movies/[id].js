@@ -30,9 +30,10 @@ const Movies = props => {
   )
 }
 
-
+// Movies.getInitialProps
 
 export async function getStaticPaths() {
+  // const movie = await getMovieById(id)  // fetch movies
   return {
     paths: [
       { params: { id: `...` } }
@@ -43,8 +44,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
-  const { id } = context.params
+export async function getStaticProps({params}) {
+  const { id } = params
   const movie = await getMovieById(id)  // fetch movies
   return {
     props: { movie }, // will be passed to the pageProps
