@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import Sidebar from '../components/sidebar.component'
 import Carousel from '../components/carousel.component'
-import MovieList from '../components/movie-lists.component'
+import MovieList from '../components/movie-list.component'
 
 import { getMovies } from '../actions'
 
@@ -26,14 +26,15 @@ const Home = ({ movies }) => {
   )
 }
 
-export async function getStaticProps(context) {
-  const movies = await getMovies(context)  // fetch movies
+// Pass fetched data via props to home component during the built-time
+export async function getStaticProps(ctx) {
+  const movies = await getMovies(ctx)  // fetch movies
   return {
     props: { movies }, // will be passed to the pageProps
   }
 }
 
-// Pass fetched data via props to home component
+// Old way to fetch data and pass to component
 // Home.getInitialProps = async () => {
 //   const movies = await getMovies()
 //   return {
@@ -41,6 +42,7 @@ export async function getStaticProps(context) {
 //   }
 // }
 
-
 export default Home
 
+
+// ctx - context
