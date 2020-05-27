@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import Sidebar from '../components/sidebar.component'
 import Carousel from '../components/carousel.component'
-import MovieList from '../components/movie-list.component'
+import MovieList from '../components/movies-list.component'
 
 import { getMovies } from '../actions'
 

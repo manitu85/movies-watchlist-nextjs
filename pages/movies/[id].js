@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router'
-import { Container, Jumbotron, Button } from 'reactstrap';
+import { Container, Jumbotron, Button } from 'reactstrap'
 
 import { getMovieById } from '../../actions'
 
 
-const Movies = props => {
+const Movie = props => {
   const router = useRouter()
-  // const { id } = router.query
+  const { id } = router.query
   const { movie } = props
-  console.log('MOB', movie);
+  // console.table('MOB', movie);
   
 
   if (router.isFallback) {
@@ -30,29 +30,36 @@ const Movies = props => {
   )
 }
 
-// Movies.getInitialProps
+Movie.getInitialProps = async ({query}) => {
+  const movie = await getMovieById(query.id)
 
-export async function getStaticPaths() {
-  // const movie = await getMovieById(id)  // fetch movies
-  return {
-    paths: [
-      { params: { id: `...` } }
-      // { params: { id: '2' } },
-      // { params: { id: '3' } }
-    ],
-    fallback: true // See the "fallback" section below
-  };
+  return {movie}
 }
 
-export async function getStaticProps({params}) {
-  const { id } = params
-  const movie = await getMovieById(id)  // fetch movies
-  return {
-    props: { movie }, // will be passed to the pageProps
-  }
-}
+export default Movie
 
-export default Movies
+
+// Newer way Next js v9.4
+// export async function getStaticPaths() {
+//   // const movie = await getMovieById(id)  // fetch movies
+//   return {
+//     paths: [
+//       { params: { id: `...` } }
+//       // { params: { id: '2' } },
+//       // { params: { id: '3' } }
+//     ],
+//     fallback: true // See the "fallback" section below
+//   };
+// }
+
+// export async function getStaticProps(params) {
+//   const { id } = params
+//   const movie = await getMovieById(id)  // fetch movies
+//   return {
+//     props: { movie }, // will be passed to the pageProps
+//   }
+// }
+
 
 
 

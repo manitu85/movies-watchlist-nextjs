@@ -11,24 +11,24 @@ const items = [
   {
     id: 1,
     src: "/business-cinema.jpg",
-    altText: 'Slide 1',
-    caption: 'Movie 1'
+    altText: 'Cinema',
+    caption: 'The Shawshank Redemption'
   },
   {
     id: 2,
     src: "/popcorn-movie.jpg",
-    altText: 'Slide 2',
-    caption: 'Movie 2'
+    altText: 'Popcorn',
+    caption: 'The Dark Knight'
   },
   {
     id: 3,
     src: "/art-camera.jpg",
-    altText: 'Slide 3',
-    caption: 'Movie 3'
+    altText: 'Camera Film',
+    caption: 'Lord of the Rings'
   }
 ];
 
-const CarouselSlider = (props) => {
+const CarouselSlider = props => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animate, setAnimate] = useState(false);
