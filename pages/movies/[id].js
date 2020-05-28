@@ -47,26 +47,6 @@ Movie.getInitialProps = async ({query}) => {
 export default Movie
 
 
-// Newer way Next js v9.4
-// export async function getStaticPaths() {
-//   // const movie = await getMovieById(id)  // fetch movies
-//   return {
-//     paths: [
-//       { params: { id: `...` } }
-//       // { params: { id: '2' } },
-//       // { params: { id: '3' } }
-//     ],
-//     fallback: true // See the "fallback" section below
-//   };
-// }
-
-// export async function getStaticProps(params) {
-//   const { id } = params
-//   const movie = await getMovieById(id)  // fetch movies
-//   return {
-//     props: { movie }, // will be passed to the pageProps
-//   }
-// }
 
 
 

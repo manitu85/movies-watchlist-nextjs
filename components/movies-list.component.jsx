@@ -3,8 +3,8 @@ import MovieCard from './movie-card.component'
 
 
 const MoviesList = ({moviesData}) => 
-  moviesData.map((movie, i) => 
-    <MovieCard key={i} movie={movie} />
+  moviesData.map((movie, idx) => 
+    <MovieCard key={idx} movie={movie} />
   )
       
 export default MoviesList
