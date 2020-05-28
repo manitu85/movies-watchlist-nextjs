@@ -26,6 +26,14 @@ const Movie = props => {
           <Button color="primary">Learn More</Button>
         </p>
       </Jumbotron>
+      <p className='text-desc'>{ movie.longDesc } </p>
+      <style jsx>
+        {`
+          .text-desc {
+            font-size: 18px;
+          }
+        `}
+      </style>
     </Container>
   )
 }

@@ -8,7 +8,9 @@ import MovieList from '../components/movies-list.component'
 import { getMovies } from '../actions'
 
 
-const Home = ({ movies }) => {
+const Home = ({ movies, images }) => {
+  // console.table(JSON.stringify(images)) // to show a obj.
+
   return (
     <Container>
       <Row>
@@ -16,7 +18,7 @@ const Home = ({ movies }) => {
           <Sidebar appName={'My Favorite'} />
         </Col>
         <Col xs={12} md={8}  lg={9}  >
-          <Carousel />
+          <Carousel images={images} />
           <Row>
             <MovieList moviesData={movies || []} />
           </Row>
@@ -29,8 +31,17 @@ const Home = ({ movies }) => {
 // Pass fetched data via props to home component during the built-time
 export async function getStaticProps(ctx) {
   const movies = await getMovies(ctx)  // fetch movies
+  const images = movies.map(movie => ({
+    id: `image-${movie.id}`,
+    image: movie.image
+    })
+  )
+  
   return {
-    props: { movies }, // will be passed to the pageProps
+    props: { 
+      movies,
+      images 
+    } // will be passed to the pageProps
   }
 }
 

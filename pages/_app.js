@@ -26,9 +26,9 @@ const App = ({ Component, pageProps }) => {
               padding-top: 3rem;
             }
 
-            .site-bg {
+            {/* .site-bg {
               background-color: #1a2b34;
-            }  
+            }   */}
         ` }
       </style>
     </>
