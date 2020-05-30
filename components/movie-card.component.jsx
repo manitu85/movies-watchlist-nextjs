@@ -10,7 +10,6 @@ import {
 
 
 const MovieCard = ({ movie }) => {
-  //  console.table(movie);
 
   // Shorten text preview
   const shortenText = (str, maxLength) => str && str.length >= maxLength ? str.slice(0, maxLength) + '...' : str

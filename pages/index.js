@@ -18,7 +18,7 @@ const Home = ({ movies, images }) => {
           <Sidebar appName={'My Favorite'} />
         </Col>
         <Col xs={12} md={8}  lg={9}  >
-          <Carousel images={images} />
+          <Carousel  />
           <Row>
             <MovieList moviesData={movies || []} />
           </Row>
