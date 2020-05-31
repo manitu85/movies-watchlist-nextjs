@@ -5,17 +5,22 @@ import Sidebar from '../components/sidebar.component'
 import Carousel from '../components/carousel.component'
 import MovieList from '../components/movies-list.component'
 
-import { getMovies } from '../actions'
+import { getMovies, getCategories } from '../actions'
 
 
-const Home = ({ movies, images }) => {
+const Home = ({ movies, images, categories }) => {
   // console.table(JSON.stringify(images)) // to show a obj.
+  // console.table(categories);
+  
 
   return (
     <Container>
       <Row>
         <Col xs={12} md={4}  lg={3} >
-          <Sidebar appName={'My Favorite'} />
+          <Sidebar 
+            appName={'My Favorite'}
+            categories={categories}
+           />
         </Col>
         <Col xs={12} md={8}  lg={9}  >
           <Carousel  />
@@ -30,18 +35,21 @@ const Home = ({ movies, images }) => {
 
 // Pass fetched data via props to home component during the built-time
 export async function getStaticProps(ctx) {
-  const movies = await getMovies(ctx)  // fetch movies
+  const movies = await getMovies(ctx)  
+  const categories = await getCategories(ctx)
   const images = movies.map(movie => ({
     id: `image-${movie.id}`,
     image: movie.image
     })
   )
   
+  // will be passed to the pageProps
   return {
     props: { 
       movies,
-      images 
-    } // will be passed to the pageProps
+      images,
+      categories   
+    } 
   }
 }
 

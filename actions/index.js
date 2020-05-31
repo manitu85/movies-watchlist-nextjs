@@ -1,10 +1,11 @@
 import { MOVIES_DATA } from '../resources/data'
+import { CATEGORY_DATA } from '../resources/data'
 
 // Actions 
 
-export const getMovies = () => 
+export const getCategories = () =>  
   new Promise((resolve, reject) => 
-    setTimeout(() => resolve(MOVIES_DATA), 100))
+    setTimeout(() => resolve(CATEGORY_DATA), 100))
 
 
 export const getMovieById = (id) => 
@@ -14,6 +15,10 @@ export const getMovieById = (id) =>
     setTimeout(() => resolve(movie), 100)
   })
 
+
+export const getMovies = () => 
+  new Promise((resolve, reject) => 
+    setTimeout(() => resolve(MOVIES_DATA), 100))
 
 
  // console.log('c% Index:', movie, 'color: orange; font-size: 60px;', );

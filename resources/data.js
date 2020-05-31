@@ -60,3 +60,13 @@ export const MOVIES_DATA = [
     image: 'https://img.cinemablend.com/filter:scale/quill/0/f/5/2/a/6/0f52a6843a25c1a5c1f9a0c00548cad9e1d912e2.jpg?mw=600'
   }
 ]
+
+export const CATEGORY_DATA = [
+  {id: '1', name: 'Sci-Fi', badge: 27},
+  {id: '2', name: 'Fantasy', badge: 23},
+  {id: '3', name: 'Adventure', badge: 16},
+  {id: '4', name: 'Comedies', badge: 14},
+  {id: '5', name: 'Cartoons', badge: 11},
+  {id: '6', name: 'Drama', badge: 9},
+  {id: '7', name: 'Actions', badge: 2}
+]
