@@ -8,7 +8,7 @@ const Movie = props => {
   const router = useRouter()
   const { id } = router.query
   const { movie } = props
-  // console.table('MOB', movie);
+  console.log(movie);
   
 
   if (router.isFallback) {
