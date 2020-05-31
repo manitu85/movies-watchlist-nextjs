@@ -36,14 +36,9 @@ const Movie = props => {
   )
 }
 
-// Movie.getInitialProps = async ({query}) => {
-//   const movie = await getMovieById(query.id)
-
-//   return {movie}
-// }
 
 export async function getStaticPaths() {
-  // const movie = await getMovieById(id)  // fetch movies
+  // const movie = await getMovieById(id) 
   return {
     paths: [
       { params: { id: `...` } }
@@ -52,9 +47,9 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({ params }) {
   const { id } = params
-  const movie = await getMovieById(id)  // fetch movies
+  const movie = await getMovieById(id) 
   return {
     props: { movie }, // will be passed to the pageProps
   }
@@ -63,6 +58,12 @@ export async function getStaticProps({params}) {
 export default Movie
 
 
+// old way < v9.3
+// Movie.getInitialProps = async ({query}) => {
+//   const movie = await getMovieById(query.id)
+
+//   return {movie}
+// }
 
 
 
