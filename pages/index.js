@@ -12,7 +12,6 @@ const Home = ({ movies, images, categories }) => {
   // console.table(JSON.stringify(images)) // to show a obj.
   // console.table(categories);
   
-
   return (
     <Container>
       <Row>

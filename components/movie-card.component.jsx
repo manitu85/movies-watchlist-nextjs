@@ -31,7 +31,7 @@ const MovieCard = ({ movie }) => {
             </h3>
             <CardText className="card-text">{shortenText(description, 130)}</CardText>
             <Link  href='/movies/[id]' as={`/movies/${id}`}>
-              <Button color="primary">
+              <Button color="primary primaryBtn">
                 <a >Read more</a>
               </Button>
             </Link>
@@ -44,10 +44,10 @@ const MovieCard = ({ movie }) => {
       <style jsx>
         {`
           .card-body {
-            background-color: #182025;
+            background-color: #3f3f3f !important;
           }
           .card-footer {
-            background-color: rgb(74, 74, 74);
+            background-color: #333;
           }
         `}
       </style>

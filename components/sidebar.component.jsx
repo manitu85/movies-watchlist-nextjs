@@ -22,7 +22,7 @@ const Sidebar = ({ appName, categories }) => (
     <style jsx>
       {`
         .list-group-item-action {
-          color: #ec7d47;
+          color: #e9800d;
         }
 
         .list-group-item-action:hover {

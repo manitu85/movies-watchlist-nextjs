@@ -6,11 +6,9 @@ import { getMovieById } from '../../actions'
 
 const Movie = props => {
   const router = useRouter()
-  const { id } = router.query
+  // const { id } = router.params
   const { movie } = props
-  console.log(movie);
   
-
   if (router.isFallback) {
     return <div>Loading...</div>
   }
@@ -38,10 +36,28 @@ const Movie = props => {
   )
 }
 
-Movie.getInitialProps = async ({query}) => {
-  const movie = await getMovieById(query.id)
+// Movie.getInitialProps = async ({query}) => {
+//   const movie = await getMovieById(query.id)
 
-  return {movie}
+//   return {movie}
+// }
+
+export async function getStaticPaths() {
+  // const movie = await getMovieById(id)  // fetch movies
+  return {
+    paths: [
+      { params: { id: `...` } }
+    ],
+    fallback: true // See the "fallback" section below
+  };
+}
+
+export async function getStaticProps({params}) {
+  const { id } = params
+  const movie = await getMovieById(id)  // fetch movies
+  return {
+    props: { movie }, // will be passed to the pageProps
+  }
 }
 
 export default Movie
