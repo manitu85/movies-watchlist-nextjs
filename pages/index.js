@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 
 import Sidebar from '../components/sidebar.component'
-import Carousel from '../components/carousel.component'
+import CarouselSlider from '../components/carousel.component'
 import MovieList from '../components/movies-list.component'
 
 import { getMovies, getCategories } from '../actions'
@@ -22,7 +22,7 @@ const Home = ({ movies, images, categories }) => {
            />
         </Col>
         <Col xs={12} md={8}  lg={9}  >
-          <Carousel  />
+          <CarouselSlider images={images} />
           <Row>
             <MovieList moviesData={movies || []} />
           </Row>

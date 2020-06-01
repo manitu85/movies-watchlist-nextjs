@@ -1,7 +1,16 @@
 import { MOVIES_DATA } from '../resources/data'
 import { CATEGORY_DATA } from '../resources/data'
 
-// Actions 
+// Actions
+
+export const createMovie = (movie) => {
+  debugger
+  const movieData = MOVIES_DATA.push(movie)
+  debugger
+  new Promise((resolve, reject) =>
+    setTimeout(() => resolve(movieData), 100))
+}
+
 
 export const getCategories = () =>  
   new Promise((resolve, reject) => 

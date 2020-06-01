@@ -2,16 +2,15 @@ import React, { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import CreateMovieForm from './createMovieForm.component'
 
-const CreateMovieModal = (props) => {
-  const { className } = props
+const CreateMovieModal = ({ className, hasSubmit, handleFormSubmit }) => {
 
   const [modal, setModal] = useState(false)
 
   const toggle = () => setModal(!modal)
 
   const submitModal = () => {
-    setModal(!modal)
     alert('submitting modal')
+    setModal(!modal)
   }
 
   const closeBtn = <button className='close' onClick={toggle}>&times;</button>
@@ -32,10 +31,12 @@ const CreateMovieModal = (props) => {
           close={closeBtn}>Create movie
         </ModalHeader>
         <ModalBody>
-          <CreateMovieForm />
+          <CreateMovieForm handleCreateMovie={handleFormSubmit} />
         </ModalBody>
         <ModalFooter>
-          <Button color='primary' onClick={submitModal}>Save changes</Button>{' '}
+          { 
+            hasSubmit && <Button color='primary' onClick={submitModal}>Save changes</Button>
+          }
           <Button color='secondary' onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
