@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const CreateMovieForm = ({ handleCreateMovie }) => {
-  console.log(handleCreateMovie);
+const CreateMovieForm = ({ handleFormSubmit }) => {
   
-
   const [form, setForm] = useState({
     name: 'some movie...',
     description: 'some description...'
@@ -38,17 +36,18 @@ const CreateMovieForm = ({ handleCreateMovie }) => {
 
   const handleSubmit = () => {
     debugger
-    handleCreateMovie({...form})
+    handleFormSubmit({...form})
   }
   
 
   return (
     <Form >
       <FormGroup>
-        <Label for='name'>Name</Label>
+        <Label htmlFor='name'>Name</Label>
         <Input
           onChange={handleChange}
           value={form.name}
+          name='name'
           type='text'
           className='form-control'
           id='name' 
@@ -56,20 +55,22 @@ const CreateMovieForm = ({ handleCreateMovie }) => {
           placeholder='Lord of the Rings' />
       </FormGroup>
       <FormGroup>
-        <Label for='description'>Description</Label>
+        <Label htmlFor='description'>Description</Label>
         <Input
           onChange={handleChange}
           value={form.description}
+          name='description'
           type='text'
           className='form-control'
           id='description'
           placeholder='Somewhere in Middle-earth...' />
       </FormGroup>
       <FormGroup>
-        <Label for='description'>Rating</Label>
+        <Label htmlFor='description'>Rating</Label>
         <Input
           onChange={handleChange}
           value={form.rating}
+          name='rating'
           type='number'
           max='5'
           min='0'
@@ -79,41 +80,45 @@ const CreateMovieForm = ({ handleCreateMovie }) => {
         <small id='emailHelp' className='form-text text-muted'>Max: 5, Min: 0 </small>
       </FormGroup>
       <FormGroup>
-        <Label for='image'>Image</Label>
+        <Label htmlFor='image'>Image</Label>
         <Input
           onChange={handleChange}
           value={form.image}
+          name='image'
           type='text'
           className='form-control'
           id='image'
           placeholder='http://.....' />
       </FormGroup>
       <FormGroup>
-        <Label for='cover'>Cover</Label>
+        <Label htmlFor='cover'>Cover</Label>
         <Input
           onChange={handleChange}
           value={form.cover}
+          name='cover'
           type='text'
           className='form-control'
           id='cover'
           placeholder='http://......' />
       </FormGroup>
       <FormGroup>
-        <Label for='longDesc'>Long Description</Label>
+        <Label htmlFor='longDesc'>Long Description</Label>
         <Input
           onChange={handleChange}
           value={form.longDesc}
-          type='textarea' 
+          name='longDesc'
+          type='text' 
           className='form-control'
           id='longDesc'
           rows='3'>
         </Input>
       </FormGroup>
       <FormGroup>
-        <Label for='genre'>Genre</Label>
+        <Label htmlFor='genre'>Genre</Label>
         <select 
           onChange={handleGenreChange} 
           multiple className='form-control' 
+          name='genre'
           id='genre'
         >
           <option>sci-fi</option>

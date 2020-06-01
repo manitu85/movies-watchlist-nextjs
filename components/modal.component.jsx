@@ -31,7 +31,7 @@ const CreateMovieModal = ({ className, hasSubmit, handleFormSubmit }) => {
           close={closeBtn}>Create movie
         </ModalHeader>
         <ModalBody>
-          <CreateMovieForm handleCreateMovie={handleFormSubmit} />
+          <CreateMovieForm handleFormSubmit={handleFormSubmit} />
         </ModalBody>
         <ModalFooter>
           { 

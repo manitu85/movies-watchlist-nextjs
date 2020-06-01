@@ -8,8 +8,7 @@ const Sidebar = ({ appName, categories }) => {
 
   const handleCreateMovie = (movie) => {
       debugger
-    createMovie(movie)
-      .then((movies) => {
+    createMovie(movie).then((movies) => {
       debugger
         console.log(JSON.stringify(movies))
       })
