@@ -31,7 +31,7 @@ const MovieCard = ({ movie }) => {
             </h3>
             <CardText className="card-text">{shortenText(description, 130)}</CardText>
             <Link  href='/movies/[id]' as={`/movies/${id}`}>
-              <Button color="primary primaryBtn">
+              <Button color="success">
                 <a >Read more</a>
               </Button>
             </Link>

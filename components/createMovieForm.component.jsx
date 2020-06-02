@@ -39,7 +39,6 @@ const CreateMovieForm = ({ handleCreateMovie }) => {
   }
 
   const handleSubmit = () => {
-    debugger
     handleCreateMovie({...form})
   }
   

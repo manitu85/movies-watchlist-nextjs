@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import CreateMovieForm from './createMovieForm.component'
+import { createMovie } from '../actions'
 
 
 const CreateMovieModal = ({ className, hasSubmit, children }) => {
@@ -8,18 +10,23 @@ const CreateMovieModal = ({ className, hasSubmit, children }) => {
 
   const toggle = () => setModal(!modal)
 
-  const submitModal = () => {
-    setModal(!modal)
-    alert('submitting modal')
-  }
-
+  const submitModal = () => setModal(!modal)
+  
   const closeBtn = <button className='close' onClick={toggle}>&times;</button>
+
+  const handleCreateMovie = (movie) => {
+    createMovie(movie).then((movies) => {
+      console.log(JSON.stringify(movies))
+    })
+    setModal(!modal)
+  }
 
   return (
     <div>
       <Button 
         block
-        color='primary' 
+        outline
+        color='success' 
         onClick={toggle}>Create Movie
       </Button>
       <Modal 
@@ -31,7 +38,7 @@ const CreateMovieModal = ({ className, hasSubmit, children }) => {
           close={closeBtn}>Create movie
         </ModalHeader>
         <ModalBody>
-          { children }
+          <CreateMovieForm handleCreateMovie={handleCreateMovie} />
         </ModalBody>
         <ModalFooter>
           { 

@@ -5,7 +5,7 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption
-} from 'reactstrap';
+} from 'reactstrap'
 
 const items = [
   {

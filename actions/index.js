@@ -6,13 +6,12 @@ import { CATEGORY_DATA } from '../resources/data'
 export const createMovie = (movie) => 
   new Promise((resolve, reject) => {
     // Create ID for movie
+    movie.id = Math.random().toString(36).substr(2, 7)
     MOVIES_DATA.push(movie)
     setTimeout(() => {
       resolve(MOVIES_DATA)
-      // reject('Cannot fetch data!')
     }, 50)
 })
-
 
 
 export const getCategories = () =>  
