@@ -3,13 +3,16 @@ import { CATEGORY_DATA } from '../resources/data'
 
 // Actions
 
-export const createMovie = (movie) => {
-  debugger
-  const movieData = MOVIES_DATA.push(movie)
-  debugger
-  new Promise((resolve, reject) =>
-    setTimeout(() => resolve(movieData), 100))
-}
+export const createMovie = (movie) => 
+  new Promise((resolve, reject) => {
+    // Create ID for movie
+    MOVIES_DATA.push(movie)
+    setTimeout(() => {
+      resolve(MOVIES_DATA)
+      // reject('Cannot fetch data!')
+    }, 50)
+})
+
 
 
 export const getCategories = () =>  

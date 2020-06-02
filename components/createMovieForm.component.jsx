@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const CreateMovieForm = ({ handleFormSubmit }) => {
+const CreateMovieForm = ({ handleCreateMovie }) => {
   
   const [form, setForm] = useState({
-    name: 'some movie...',
-    description: 'some description...'
+    name: '',
+    description: '',
+    rating: '',
+    image: '',
+    cover: '',
+    longDesc: ''
   })
 
   const handleChange = e => {
@@ -36,7 +40,7 @@ const CreateMovieForm = ({ handleFormSubmit }) => {
 
   const handleSubmit = () => {
     debugger
-    handleFormSubmit({...form})
+    handleCreateMovie({...form})
   }
   
 
@@ -117,7 +121,8 @@ const CreateMovieForm = ({ handleFormSubmit }) => {
         <Label htmlFor='genre'>Genre</Label>
         <select 
           onChange={handleGenreChange} 
-          multiple className='form-control' 
+          className='form-control' 
+          multiple 
           name='genre'
           id='genre'
         >
@@ -130,7 +135,7 @@ const CreateMovieForm = ({ handleFormSubmit }) => {
           <option>action</option>
         </select>
       </FormGroup>
-      <Button color='primary' onClick={handleSubmit}>Create</Button>{' '}
+      <Button color='primary' type='button' onClick={handleSubmit}>Create</Button>{' '}
     </Form>
   )
 }

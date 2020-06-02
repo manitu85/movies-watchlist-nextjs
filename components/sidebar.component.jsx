@@ -1,5 +1,6 @@
 import React from 'react'
 import CreateMovieModal from './modal.component'
+import CreateMovieForm from './createMovieForm.component'
 import { ListGroup, ListGroupItem, Badge } from 'reactstrap'
 
 import { createMovie } from '../actions';
@@ -7,9 +8,7 @@ import { createMovie } from '../actions';
 const Sidebar = ({ appName, categories }) => {
 
   const handleCreateMovie = (movie) => {
-      debugger
     createMovie(movie).then((movies) => {
-      debugger
         console.log(JSON.stringify(movies))
       })
   }
@@ -29,9 +28,9 @@ const Sidebar = ({ appName, categories }) => {
                 <Badge pill className='float-right'>{category.badge}</Badge>
             </a>)
         }
-        <CreateMovieModal  
-          handleFormSubmit={handleCreateMovie}
-          hasSubmit={false} />
+        <CreateMovieModal  hasSubmit={false} >
+          <CreateMovieForm handleCreateMovie={handleCreateMovie} />
+        </CreateMovieModal>
       </ListGroup>
       <style jsx>
         {`
@@ -40,7 +39,7 @@ const Sidebar = ({ appName, categories }) => {
           }
 
           .list-group-item-action:hover {
-            color: #fff;
+            color: #202020;
           }
       `}
       </style>
