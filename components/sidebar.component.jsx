@@ -1,9 +1,7 @@
 import React from 'react'
 import CreateMovieModal from './modal.component'
-import CreateMovieForm from './createMovieForm.component'
 import { ListGroup, ListGroupItem, Badge } from 'reactstrap'
 
-// import { createMovie } from '../actions';
 
 const Sidebar = ({ appName, categories }) => {
 
