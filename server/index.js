@@ -1,13 +1,13 @@
 const next = require('next')
 const express = require('express')
 const bodyParser = require('body-parser')
+const moviesData = require('./data.json')
 
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 // const server = express()
-const moviesData = require('./data.json')
 
 app.prepare()
   .then(() => {
@@ -20,16 +20,17 @@ app.prepare()
       return res.json(moviesData)
     })
 
-    server.post('/api/v1/movies', (req, res) => {
-      const movie = req.body
-      console.log(JSON.stringify(movie));
-      
+    server.get('/api/v1/movies/:id', (req, res) => {
+      const { id } = req.params
+      const movie = moviesData.find(m => m.id === id)
       return res.json(movie)
     })
 
-    server.patch('/api/v1/movies:id', (req, res) => {
-      const { id } = req.params
-      return res.json({ message: `Updating post of id ${id}` })
+    server.post('/api/v1/movies', (req, res) => {
+      const movie = req.body
+      console.log(JSON.stringify(movie));
+
+      return res.json({...movie, createdTime: 'today', author: "Burke"})
     })
 
     server.delete('/api/v1/movies:id', (req, res) => {
