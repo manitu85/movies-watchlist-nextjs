@@ -34,8 +34,9 @@ const Home = ({ movies, images, categories }) => {
 
 // Pass fetched data via props to home component during the built-time
 export async function getStaticProps(ctx) {
-  const movies = await getMovies(ctx)  
-  const categories = await getCategories(ctx)
+  debugger
+  const movies = await getMovies()  
+  const categories = await getCategories()
   const images = movies.map(movie => ({
     id: `image-${movie.id}`,
     image: movie.image

@@ -1,5 +1,10 @@
-import { MOVIES_DATA } from '../resources/data'
+import axios from 'axios'
+// import { MOVIES_DATA } from '../resources/data'
 import { CATEGORY_DATA } from '../resources/data'
+
+
+const MOVIES_DATA = []
+const BASE_URL = 'http://localhost:3000'
 
 // Actions
 
@@ -27,9 +32,13 @@ export const getMovieById = (id) =>
   })
 
 
-export const getMovies = () => 
-  new Promise((resolve, reject) => 
-    setTimeout(() => resolve(MOVIES_DATA), 100))
+// export const getMovies = () => 
+//   new Promise((resolve, reject) => 
+//     setTimeout(() => resolve(MOVIES_DATA), 100))
 
+export const getMovies = async () => {
+  const res = await axios.get(`${BASE_URL}/api/v1/movies`)
+  return res.data
+}
 
  // console.log('c% Index:', movie, 'color: orange; font-size: 60px;', );
