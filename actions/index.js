@@ -24,21 +24,28 @@ export const getCategories = () =>
     setTimeout(() => resolve(CATEGORY_DATA), 100))
 
 
-export const getMovieById = (id) => 
-  new Promise((resolve, reject) => {
-    const movieIndex = MOVIES_DATA.findIndex(movie => movie.id === id)
-    const movie = MOVIES_DATA[movieIndex]
-    setTimeout(() => resolve(movie), 100)
-  })
+export const getMovieById = async (id) => {
+  const res = await axios.get(`${BASE_URL}/api/v1/movies/${id}`)
+  return res.data
+}
 
-
-// export const getMovies = () => 
-//   new Promise((resolve, reject) => 
-//     setTimeout(() => resolve(MOVIES_DATA), 100))
 
 export const getMovies = async () => {
   const res = await axios.get(`${BASE_URL}/api/v1/movies`)
   return res.data
 }
+
+
+// export const getMovieById = (id) => 
+//   new Promise((resolve, reject) => {
+//     const movieIndex = MOVIES_DATA.findIndex(movie => movie.id === id)
+//     const movie = MOVIES_DATA[movieIndex]
+//     setTimeout(() => resolve(movie), 100)
+//   })
+
+
+// export const getMovies = () => 
+//   new Promise((resolve, reject) => 
+//     setTimeout(() => resolve(MOVIES_DATA), 100))
 
  // console.log('c% Index:', movie, 'color: orange; font-size: 60px;', );

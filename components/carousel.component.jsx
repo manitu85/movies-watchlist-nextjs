@@ -10,19 +10,19 @@ import {
 const items = [
   {
     id: 1,
-    src: "/business-cinema.jpg",
+    src: "/cinema.jpg",
     altText: 'Cinema',
     caption: 'The Shawshank Redemption'
   },
   {
     id: 2,
-    src: "/popcorn-movie.jpg",
+    src: "/art-camera.jpg",
     altText: 'Popcorn',
     caption: 'The Dark Knight'
   },
   {
     id: 3,
-    src: "/art-camera.jpg",
+    src: "/popcorn-movie.jpg",
     altText: 'Camera Film',
     caption: 'Lord of the Rings'
   }
@@ -58,7 +58,7 @@ const CarouselSlider = props => {
         key={item.id}
       >
         <img src={item.src} alt={item.altText} />
-        <CarouselCaption captionHeader={item.caption} captionText={item.altText} />
+        {/* <CarouselCaption captionHeader={item.caption} captionText={item.altText} /> */}
       </CarouselItem>
     );
   });
