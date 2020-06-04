@@ -6,6 +6,7 @@ const CreateMovieForm = ({ handleCreateMovie }) => {
   const [form, setForm] = useState({
     name: '',
     description: '',
+    releaseYear: '',
     rating: '',
     image: '',
     cover: '',
@@ -14,33 +15,25 @@ const CreateMovieForm = ({ handleCreateMovie }) => {
 
   const handleChange = e => {
     const { name, value } = e.target
-
-    setForm({
-      ...form,
-      [name] : value
-    })
+    setForm({...form, [name] : value })
   }
 
   const handleGenreChange = e => {
-  
+
     const { options, name, value } = e.target
-    let selectValue = []
+    let selectedValue = []
     
     for (let i = 0; i < options.length; i++) {
       if(options[i].selected) {
-        selectValue.push(options[i].value)
+        selectedValue.push(options[i].value)
         }
       }
 
-    setForm({
-      ...form,
-      [name]: value.toString()
-    })
+    setForm({...form, [name]: value.toString() })
   }
 
-  const handleSubmit = () => {
-    handleCreateMovie({...form})
-  }
+  const handleSubmit = () => handleCreateMovie({...form})
+  
   
 
   return (
@@ -67,6 +60,17 @@ const CreateMovieForm = ({ handleCreateMovie }) => {
           className='form-control'
           id='description'
           placeholder='Somewhere in Middle-earth...' />
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor='releaseYear'>Year of release</Label>
+        <Input
+          onChange={handleChange}
+          value={form.releaseYear}
+          name='releaseYear'
+          type='text'
+          className='form-control'
+          id='releaseYear'
+          placeholder='release year' />
       </FormGroup>
       <FormGroup>
         <Label htmlFor='description'>Rating</Label>

@@ -1,5 +1,7 @@
-import react, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
+import Lottie from 'react-lottie'
+import movieAnimation from '../public/lottie/1879-movie-loading.json'
 import { 
   Container, 
   Navbar, 
@@ -9,17 +11,36 @@ import {
   Collapse 
 } from 'reactstrap'
 
+
 const NavBar = () => {
 
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(true)
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
+  const toggleNavbar = () => setCollapsed(!collapsed)
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: movieAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  }
+
+  const style = { color: '#fff', fontSize: '1.25rem', marginLeft: '-1rem', cursor: 'pointer', textDecoration: 'none' }
 
   return (
-    <Navbar className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <Navbar style={{padding: 0}} className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <Container>
         <Link href="/">
-          <a className="navbar-brand" >MOVIES DB</a>
+          <a className="navbar-brand" >
+            <Lottie options={defaultOptions}
+              height={80}
+              width={80}
+            /></a>
+        </Link>
+        <Link href="/">
+          <a style={style}>SPY ON MOVIE DB</a>
         </Link>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
@@ -49,7 +70,7 @@ const NavBar = () => {
           </Nav>
         </Collapse>
       </Container>
-    </Navbar>
+    </Navbar>  
   )
 }
 

@@ -10,19 +10,19 @@ import {
 const items = [
   {
     id: 1,
-    src: "/cinema.jpg",
+    src: "/images/cinema.jpg",
     altText: 'Cinema',
     caption: 'The Shawshank Redemption'
   },
   {
     id: 2,
-    src: "/art-camera.jpg",
+    src: "/images/art-camera.jpg",
     altText: 'Popcorn',
     caption: 'The Dark Knight'
   },
   {
     id: 3,
-    src: "/popcorn-movie.jpg",
+    src: "/images/popcorn-movie.jpg",
     altText: 'Camera Film',
     caption: 'Lord of the Rings'
   }

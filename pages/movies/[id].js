@@ -1,18 +1,23 @@
 import { useRouter } from 'next/router'
 import { Container, Jumbotron, Button } from 'reactstrap'
 
-import { getMovieById } from '../../actions'
+import { getMovieById, deleteMovie } from '../../actions'
 
 
 const Movie = props => {
   const router = useRouter()
-  // const { id } = router.params
+  const { id } = router.query
   const { movie } = props
-  
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
 
+  const handleDeleteMovie = id => {
+    deleteMovie(id)
+      .then(() => {
+        router.push('/')
+    })
+  }
+  
+  if (router.isFallback) return <div>Loading...</div>
+  
   return(
     <Container>
       <Jumbotron>
@@ -21,7 +26,8 @@ const Movie = props => {
         <hr className="my-2" />
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         <p className="lead">
-          <Button color="primary">Learn More</Button>
+          <Button outline color="primary">Edit Movie</Button>{' '}
+          <Button onClick={() => handleDeleteMovie(id)} outline color="danger">Delete Movie</Button>
         </p>
       </Jumbotron>
       <p className='text-desc'>{ movie.longDesc } </p>
@@ -40,10 +46,8 @@ const Movie = props => {
 export async function getStaticPaths() {
   // const movie = await getMovieById(id) 
   return {
-    paths: [
-      { params: { id: `...` } }
-    ],
-    fallback: true // See the "fallback" section below
+    paths: [{ params: { id: `...` } }],
+    fallback: false 
   };
 }
 
@@ -58,12 +62,6 @@ export async function getStaticProps({ params }) {
 export default Movie
 
 
-// old way < v9.3
-// Movie.getInitialProps = async ({query}) => {
-//   const movie = await getMovieById(query.id)
-
-//   return {movie}
-// }
 
 
 

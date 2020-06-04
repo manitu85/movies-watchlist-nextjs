@@ -15,13 +15,13 @@ const Home = ({ movies, images, categories }) => {
   return (
     <Container>
       <Row>
-        <Col xs={12} md={4}  lg={3} >
+        <Col xs={12} md={4} lg={3} >
           <Sidebar 
             appName={'My Favorite'}
             categories={categories}
            />
         </Col>
-        <Col xs={12} md={8}  lg={9}  >
+        <Col xs={12} md={8} lg={9}  >
           <CarouselSlider images={images} />
           <Row>
             <MovieList moviesData={movies || []} />
@@ -41,7 +41,7 @@ export async function getStaticProps(ctx) {
     image: movie.image
     })
   )
-  
+
   // will be passed to the pageProps
   return {
     props: { 
@@ -52,6 +52,17 @@ export async function getStaticProps(ctx) {
   }
 }
 
+
+export default Home
+
+
+// ctx - context
+// TO-DO: 
+  // 1. finish multiple categories options
+  // 2. add year released
+  // 3. attach to heroku app
+  // 4. eventually particles effect to home page
+
 // Old way to fetch data and pass to component
 // Home.getStaticProps = async () => {
 //   const movies = await getMovies()
@@ -59,8 +70,3 @@ export async function getStaticProps(ctx) {
 //     movies
 //   }
 // }
-
-export default Home
-
-
-// ctx - context
