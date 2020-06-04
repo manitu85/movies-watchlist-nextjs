@@ -1,13 +1,16 @@
 const next = require('next')
 const express = require('express')
 const bodyParser = require('body-parser')
-const moviesData = require('./data.json')
-
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-// const server = express()
+
+const fs = require('fs')
+const path = require('path')
+const filePath = './data.json'
+const moviesData = require(filePath)
+
 
 app.prepare()
   .then(() => {
@@ -16,7 +19,6 @@ app.prepare()
     server.use(bodyParser.json())
 
     server.get('/api/v1/movies', (req, res) => {
-      // return res.json({ message: 'Hello World' })
       return res.json(moviesData)
     })
 
@@ -28,10 +30,20 @@ app.prepare()
 
     server.post('/api/v1/movies', (req, res) => {
       const movie = req.body
-      console.log(JSON.stringify(movie));
+      moviesData.push(movie)
 
-      return res.json({...movie, createdTime: 'today', author: "Burke"})
+      const pathToFile = path.join(__dirname, filePath)
+      const stringifiedData = JSON.stringify(moviesData, null, 2)
+
+      fs.writeFile(pathToFile, stringifiedData, (err) => {
+        if (err) {
+          return res.status(422).send(err)
+        }
+
+        return res.json('Movie has been successfully added!')
+      })
     })
+
 
     server.delete('/api/v1/movies:id', (req, res) => {
       const { id } = req.params
@@ -39,7 +51,7 @@ app.prepare()
     })
 
     server.get('*', (req, res) => {
-      // next.js is handling requests and navigation
+      // next.js is handling requests and navigation for all routes
       return handle(req, res)
   })
 

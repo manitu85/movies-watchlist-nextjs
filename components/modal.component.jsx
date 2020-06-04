@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import CreateMovieForm from './createMovieForm.component'
 import { createMovie } from '../actions'
@@ -7,6 +8,8 @@ import { createMovie } from '../actions'
 const CreateMovieModal = ({ className, hasSubmit, children }) => {
 
   const [modal, setModal] = useState(false)
+
+  const router = useRouter()
 
   const toggle = () => setModal(!modal)
 
@@ -19,6 +22,7 @@ const CreateMovieModal = ({ className, hasSubmit, children }) => {
       console.log(JSON.stringify(movies))
     })
     setModal(!modal)
+    router.push('/')
   }
 
   return (
