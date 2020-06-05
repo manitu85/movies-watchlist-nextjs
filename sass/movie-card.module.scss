@@ -1,0 +1,15 @@
+.card-body {
+  background-color: #3f3f3f !important;
+}
+
+.CardFooter {
+  background-color: #333;
+}
+
+.list-group-item-action {
+  color: #ec7d47;
+
+  &:hover {
+    color: #fff;
+  }
+}

@@ -1,9 +1,10 @@
-// next.config.js
-const withCss = require('@zeit/next-css')
-const withSass = require('@zeit/next-sass')
+// This config is built-in now in > v9.3
 
-module.exports = withCss(withSass({
-  cssModules: true
-}))
+// const withCss = require('@zeit/next-css')
+// const withSass = require('@zeit/next-sass')
+
+// module.exports = withCss(withSass({
+//   cssModules: true
+// }))
 
 

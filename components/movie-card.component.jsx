@@ -7,6 +7,7 @@ import {
   CardBody,
   Button
 } from 'reactstrap'
+import styles from '../sass/movie-card.module.scss'
 
 
 const MovieCard = ({ movie }) => {
@@ -36,21 +37,12 @@ const MovieCard = ({ movie }) => {
               </Button>
             </Link>
           </CardBody>
-          <div className="card-footer">
+          <div   className={`card-footer ${styles.CardFooter}`}>
             <small className="text-white">{rating}</small>
           </div>
         </Card>
       </Col>
-      <style jsx>
-        {`
-          .card-body {
-            background-color: #3f3f3f !important;
-          }
-          .card-footer {
-            background-color: #333;
-          }
-        `}
-      </style>
+
     </React.Fragment>
   )
 }
