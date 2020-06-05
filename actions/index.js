@@ -11,24 +11,24 @@ export const getMovies = async () => {
   return res.data
 }
 
-export const getMovieById = async (id) => {
+export const getMovieById = async id => {
   const res = await axios.get(`${BASE_URL}/api/v1/movies/${id}`)
   return res.data
 }
 
-export const createMovie = async (movie) => {
+export const createMovie = async movie => {
   movie.id = Math.random().toString(16).substr(2, 5)
   const res = await axios.post(`${BASE_URL}/api/v1/movies`, movie)
   return res.data
 }
 
-export const deleteMovie = async (id) => {
-  const res = await axios.delete(`${BASE_URL}/api/v1/movies/${id}`)
+export const updateMovie = async movie => {
+  const res = await axios.patch(`${BASE_URL}/api/v1/movies/${movie.id}`, movie)
   return res.data
 }
 
-export const updateMovie = async (movie) => {
-  const res = await axios.patch(`${BASE_URL}/api/v1/movies/${movie.id}`, movie)
+export const deleteMovie = async id => {
+  const res = await axios.delete(`${BASE_URL}/api/v1/movies/${id}`)
   return res.data
 }
 

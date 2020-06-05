@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { Container, Jumbotron, Button } from 'reactstrap'
 
 import { getMovieById, deleteMovie } from '../../../actions'
@@ -17,6 +18,7 @@ const Movie = props => {
   }
 
   if (router.isFallback) return <div>Loading...</div>
+  // router.isFallback && <div>Loading...</div>
 
   return (
     <Container>
@@ -26,12 +28,12 @@ const Movie = props => {
         <hr className="my-2" />
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         <p className="lead">
-          <Button
-            outline
-            color="primary"
-            onClick={() => router.push(`/movies/${id}/edit`)}
-            href="#"
-          >Edit</Button>{' '}
+          <Link href="/movies/[id]/edit" as={`/movies/${id}/edit`}>
+            <Button
+              outline
+              color="primary"
+            >Edit</Button>
+          </Link>{' '}
           <Button
             outline
             color="danger"
@@ -52,7 +54,6 @@ const Movie = props => {
 
 
 export async function getStaticPaths() {
-  // const movie = await getMovieById(id) 
   return {
     paths: [{ params: { id: `...` } }],
     fallback: false
@@ -63,7 +64,7 @@ export async function getStaticProps({ params }) {
   const { id } = params
   const movie = await getMovieById(id)
   return {
-    props: { movie }, // will be passed to the pageProps
+    props: { movie }
   }
 }
 

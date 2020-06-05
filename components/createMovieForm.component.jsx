@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const CreateMovieForm = ({ handleCreateMovie, initialData, submitButtonText }) => {
+const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) => {
 
   const defaultData = { 
     name: '',
@@ -44,7 +44,7 @@ const CreateMovieForm = ({ handleCreateMovie, initialData, submitButtonText }) =
     setForm({...form, [name]: value.toString() })
   }
 
-  const handleSubmit = () => handleCreateMovie({...form})
+  const handleSubmit = () => handleFormSubmit({...form})
   
   
 

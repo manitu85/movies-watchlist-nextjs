@@ -1,38 +1,39 @@
 import React from 'react'
-import Router from 'next/router'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import CreateMovieForm from '../../../components/createMovieForm.component'
 import { getMovieById, updateMovie } from '../../../actions'
 
 
-class EditMovie extends React.Component {
+const EditMovie = ({ movie }) => {
 
-  static async getInitialProps({ query }) {
-    const movie = await getMovieById(query.id)
-    return { movie }
-  }
+  const router = useRouter()
 
-  handleUpdateMovie = (movie) => {
+  const handleUpdateMovie = (movie) => {
     updateMovie(movie)
-      .then((updatedMovie) => {
-        Router.push(`/movies/${movie.id}`)
+      .then((updatedData) => {
+        router.push('/movies/[id]', `/movies/${movie.id}`)
+        // router.push('/')
     })
-    // setModal(!modal)
   }
 
-  render() {
-    const { movie } = this.props
-    return (
-      <div className="container">
-        <h1>Edit the Movie</h1>
-        <CreateMovieForm 
-          submitButtonText='Update'
-          initialData={movie} 
-          handleFormSubmit={this.handleUpdateMovie} 
-          />
-      </div>
-    )
-  }
+
+  return (
+    <div className="container">
+      <h1>Edit the Movie</h1>
+      <CreateMovieForm 
+        submitButtonText='Update'
+        initialData={movie} 
+        handleFormSubmit={handleUpdateMovie} 
+        />
+    </div>
+  )
 }
 
-// TO-DO ADD getStaticProps and convert to functional component
+EditMovie.getInitialProps = async ({ query }) => {
+  const movie = await getMovieById(query.id)
+  return { movie }
+}
+
+
 export default EditMovie
