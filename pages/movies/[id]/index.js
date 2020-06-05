@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { Container, Jumbotron, Button } from 'reactstrap'
 
-import { getMovieById, deleteMovie } from '../../actions'
+import { getMovieById, deleteMovie } from '../../../actions'
 
 
 const Movie = props => {
@@ -13,12 +13,12 @@ const Movie = props => {
     deleteMovie(id)
       .then(() => {
         router.push('/')
-    })
+      })
   }
-  
+
   if (router.isFallback) return <div>Loading...</div>
-  
-  return(
+
+  return (
     <Container>
       <Jumbotron>
         <h1 className="display-4">{movie.name}</h1>
@@ -26,11 +26,19 @@ const Movie = props => {
         <hr className="my-2" />
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         <p className="lead">
-          <Button outline color="primary">Edit Movie</Button>{' '}
-          <Button onClick={() => handleDeleteMovie(id)} outline color="danger">Delete Movie</Button>
+          <Button
+            outline
+            color="primary"
+            onClick={() => router.push(`/movies/${id}/edit`)}
+            href="#"
+          >Edit</Button>{' '}
+          <Button
+            outline
+            color="danger"
+            onClick={() => handleDeleteMovie(id)}>Delete Movie</Button>
         </p>
       </Jumbotron>
-      <p className='text-desc'>{ movie.longDesc } </p>
+      <p className='text-desc'>{movie.longDesc} </p>
       <style jsx>
         {`
           .text-desc {
@@ -47,13 +55,13 @@ export async function getStaticPaths() {
   // const movie = await getMovieById(id) 
   return {
     paths: [{ params: { id: `...` } }],
-    fallback: false 
+    fallback: false
   };
 }
 
 export async function getStaticProps({ params }) {
   const { id } = params
-  const movie = await getMovieById(id) 
+  const movie = await getMovieById(id)
   return {
     props: { movie }, // will be passed to the pageProps
   }
@@ -67,5 +75,4 @@ export default Movie
 
 
 
- 
- 
+

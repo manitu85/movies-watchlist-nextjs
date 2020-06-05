@@ -32,7 +32,7 @@ const Home = ({ movies, images, categories }) => {
   )
 }
 
-// Pass fetched data via props to home component during the built-time
+// Pass fetched data via props to component during the built-time
 export async function getStaticProps(ctx) {
   const movies = await getMovies()  
   const categories = await getCategories()

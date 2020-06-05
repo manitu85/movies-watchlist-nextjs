@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const CreateMovieForm = ({ handleCreateMovie }) => {
-  
-  const [form, setForm] = useState({
+const CreateMovieForm = ({ handleCreateMovie, initialData, submitButtonText }) => {
+
+  const defaultData = { 
     name: '',
     description: '',
     releaseYear: '',
@@ -11,7 +11,19 @@ const CreateMovieForm = ({ handleCreateMovie }) => {
     image: '',
     cover: '',
     longDesc: ''
-  })
+  }
+  
+  const formData = initialData ? {...initialData} : defaultData
+
+  const [form, setForm] = useState(formData)
+  const [initialDataLoaded, setInitialDataLoaded] = useState(false)
+
+  // useEffect(() => {
+  //     if (initialData) {
+  //       setForm(initialData)
+  //       setInitialDataLoaded(true)
+  //     }
+  //   }, [initialDataLoaded])
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -138,7 +150,12 @@ const CreateMovieForm = ({ handleCreateMovie }) => {
           <option>action</option>
         </select>
       </FormGroup>
-      <Button color='primary' type='button' onClick={handleSubmit}>Create</Button>{' '}
+      {/* <Button color='primary' type='button' onClick={handleSubmit}>Create</Button>{' '} */}
+      <Button
+        color='primary'
+        onClick={handleSubmit}>
+        {submitButtonText || 'Create'}
+      </Button>
     </Form>
   )
 }

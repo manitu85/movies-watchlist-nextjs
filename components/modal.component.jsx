@@ -31,7 +31,7 @@ const CreateMovieModal = ({ className, hasSubmit, children }) => {
         block
         outline
         color='success' 
-        onClick={toggle}>Create Movie
+        onClick={toggle}>Create Movie Watchlist
       </Button>
       <Modal 
         isOpen={modal} 
