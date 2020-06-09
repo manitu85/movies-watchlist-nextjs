@@ -12,9 +12,11 @@ import styles from '../sass/movie-card.module.scss'
 
 const MovieCard = ({ movie }) => {
 
+  const { id, image, releaseYear, name, description, genre, rating } = movie
+  
   // Shorten text preview
   const shortenText = (str, maxLength) => str && str.length >= maxLength ? str.slice(0, maxLength) + '...' : str
-  const { id, image, releaseYear, name, description, genre, rating } = movie
+
   return (
     <React.Fragment>
       <Col md={6} lg={4} className="mb-4">
@@ -37,7 +39,7 @@ const MovieCard = ({ movie }) => {
               </Button>
             </Link>
           </CardBody>
-          <div   className={`card-footer ${styles.CardFooter}`}>
+          <div  className={`card-footer ${styles.CardFooter}`}>
             <small className="text-white">{rating}</small>
           </div>
         </Card>
