@@ -43,10 +43,7 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
         }
       }
 
-    setForm({ 
-      ...form, 
-      genre: selectedValue.toString() 
-    })
+    setForm({...form, genre: selectedValue.toString() })
   }
 
 
@@ -145,18 +142,22 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
           name='genre'
           type='select'
           id='genre'
-          className='form-control' 
-           
+          className='form-control'  
         >
+          <option>comedy</option>
           <option>sci-fi</option>
+          <option>horror</option>
+          <option>romance</option>
           <option>fantasy</option>
           <option>adventure</option>
-          <option>comedy</option>
-          <option>cartoon</option>
+          <option>superhero</option>
+          <option>animation</option>
           <option>drama</option>
+          <option>mystery</option>
+          <option>action</option>
+          <option>crime</option>
           <option>historical</option>
           <option>documentary</option>
-          <option>action</option>
         </Input>
       </FormGroup>
       {/* <Button color='primary' type='button' onClick={handleSubmit}>Create</Button>{' '} */}

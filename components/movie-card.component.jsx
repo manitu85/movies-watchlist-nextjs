@@ -7,7 +7,7 @@ import {
   CardBody,
   Button
 } from 'reactstrap'
-import styles from '../sass/movie-card.module.scss'
+import styles from '../sass/main.module.scss'
 
 
 const MovieCard = ({ movie }) => {
@@ -32,7 +32,6 @@ const MovieCard = ({ movie }) => {
                 <a>{name}</a>
               </Link>
             </h4>
-            <div>{genre}</div>
             <CardText className="card-text">{shortenText(description, 130)}</CardText>
             <Link  href='/movies/[id]' as={`/movies/${id}`}>
               <Button color="success">

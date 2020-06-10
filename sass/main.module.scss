@@ -1,4 +1,4 @@
-.card-body {
+.cardBody {
   background-color: #3f3f3f !important;
 }
 
@@ -6,10 +6,15 @@
   background-color: #333;
 }
 
-.list-group-item-action {
+.listGroupItemAction {
   color: #ec7d47;
 
   &:hover {
     color: #fff;
   }
+}
+
+.filterHeadings {
+  color: #57ae4a;
+  margin-bottom: '1rem';
 }

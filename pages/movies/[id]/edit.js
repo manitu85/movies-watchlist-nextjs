@@ -17,7 +17,6 @@ const EditMovie = ({ movie }) => {
     })
   }
 
-
   return (
     <div className="container">
       <h1>Edit the Movie</h1>

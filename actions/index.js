@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CATEGORY_DATA } from '../resources/data'
+import { CATEGORY_DATA } from '../resources/category-data'
 
 const MOVIES_DATA = []
 const BASE_URL = 'http://localhost:3000'
@@ -10,9 +10,8 @@ export const getMovies = async () => {
   try {
     const res = await axios.get(`${BASE_URL}/api/v1/movies`)
     return res.data
-  }
-  catch {
-    console.log(err => err) 
+  } catch (err) {
+    console.error(err) 
   }
 }
 

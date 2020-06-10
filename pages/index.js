@@ -5,6 +5,8 @@ import Sidebar from '../components/sidebar.component'
 import CarouselSlider from '../components/carousel.component'
 import MovieList from '../components/movies-list.component'
 
+import styles from '../sass/main.module.scss'
+
 // import Particles from 'react-particles-js'
 
 import { getMovies, getCategories } from '../actions'
@@ -38,7 +40,7 @@ const Home = ({ movies, images, categories }) => {
             </Col>
             <Col xs={12} md={8} lg={9}  >
               <CarouselSlider images={images} />
-              <h1 style={{ color: '#57ae4a', marginBottom: '1rem'}} >{filter} movies</h1>
+              <h1 className={styles.filterHeadings}>{filter} movies</h1>
               <Row>
                 <MovieList movies={filterMovies(movies) || []} />
               </Row>
@@ -50,7 +52,7 @@ const Home = ({ movies, images, categories }) => {
 }
 
 // Pass fetched data via props to component during the built-time
-export async function getStaticProps(ctx) {
+export async function getStaticProps(ctx) { // ctx - context
   const movies = await getMovies()
   const categories = await getCategories()
   const images = movies.map(movie => ({ // obj.
@@ -73,10 +75,9 @@ export async function getStaticProps(ctx) {
 export default Home
 
 
-// ctx - context
+
 // TO-DO: 
-  // 1. finish multiple categories options
-  // 2. add year released
+  // detach inputs to 2 components 
   // 3. attach to heroku app
   // 4. eventually particles effect to home page
 

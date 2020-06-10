@@ -25,6 +25,8 @@ const items = [
   }
 ]
 
+// TO-DO add more images
+
 const CarouselSlider = props => {
 
   const [activeIndex, setActiveIndex] = useState(0)
