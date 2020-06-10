@@ -5,12 +5,14 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
 
   const defaultData = { 
     name: '',
-    description: '',
     releaseYear: '',
+    description: '',
+    longDesc: '',
     rating: '',
+    genre: '',
     image: '',
-    cover: '',
-    longDesc: ''
+    // cover: '',
+    // trailer: '',
   }
   
   const formData = initialData ? {...initialData} : defaultData
@@ -32,7 +34,7 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
 
   const handleGenreChange = e => {
 
-    const { options, name, value } = e.target
+    const { options } = e.target
     let selectedValue = []
     
     for (let i = 0; i < options.length; i++) {
@@ -41,8 +43,12 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
         }
       }
 
-    setForm({...form, [name]: value.toString() })
+    setForm({ 
+      ...form, 
+      genre: selectedValue.toString() 
+    })
   }
+
 
   const handleSubmit = () => handleFormSubmit({...form})
   
@@ -59,8 +65,7 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
           type='text'
           className='form-control'
           id='name' 
-          aria-describedby='emailHelp'
-          placeholder='Lord of the Rings' />
+          placeholder='movie name' />
       </FormGroup>
       <FormGroup>
         <Label htmlFor='description'>Description</Label>
@@ -71,7 +76,7 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
           type='text'
           className='form-control'
           id='description'
-          placeholder='Somewhere in Middle-earth...' />
+          placeholder='movie description...' />
       </FormGroup>
       <FormGroup>
         <Label htmlFor='releaseYear'>Year of release</Label>
@@ -82,7 +87,7 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
           type='text'
           className='form-control'
           id='releaseYear'
-          placeholder='release year' />
+          placeholder='released year' />
       </FormGroup>
       <FormGroup>
         <Label htmlFor='description'>Rating</Label>
@@ -91,12 +96,12 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
           value={form.rating}
           name='rating'
           type='number'
-          max='5'
+          max='10'
           min='0'
           className='form-control'
           id='rating'
-          placeholder='3' />
-        <small id='emailHelp' className='form-text text-muted'>Max: 5, Min: 0 </small>
+          placeholder='rating' />
+        <small className='form-text text-muted'>Min: 0, Max: 10</small>
       </FormGroup>
       <FormGroup>
         <Label htmlFor='image'>Image</Label>
@@ -134,21 +139,25 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
       </FormGroup>
       <FormGroup>
         <Label htmlFor='genre'>Genre</Label>
-        <select 
+        <Input 
+          multiple
           onChange={handleGenreChange} 
-          className='form-control' 
-          multiple 
           name='genre'
+          type='select'
           id='genre'
+          className='form-control' 
+           
         >
           <option>sci-fi</option>
           <option>fantasy</option>
           <option>adventure</option>
-          <option>comedies</option>
-          <option>cartoons</option>
+          <option>comedy</option>
+          <option>cartoon</option>
           <option>drama</option>
+          <option>historical</option>
+          <option>documentary</option>
           <option>action</option>
-        </select>
+        </Input>
       </FormGroup>
       {/* <Button color='primary' type='button' onClick={handleSubmit}>Create</Button>{' '} */}
       <Button
@@ -159,5 +168,7 @@ const CreateMovieForm = ({ handleFormSubmit, initialData, submitButtonText }) =>
     </Form>
   )
 }
+
+// TO-D0 repair multiply choice
 
 export default CreateMovieForm

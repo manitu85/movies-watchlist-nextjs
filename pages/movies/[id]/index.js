@@ -17,6 +17,7 @@ const Movie = props => {
       })
   }
 
+  
   if (router.isFallback) return <div>Loading...</div>
   // router.isFallback && <div>Loading...</div>
 

@@ -11,57 +11,54 @@ const items = [
   {
     id: 1,
     src: "/images/cinema.jpg",
-    altText: 'Cinema',
-    caption: 'The Shawshank Redemption'
+    caption: 'Cinema',
   },
   {
     id: 2,
     src: "/images/art-camera.jpg",
-    altText: 'Popcorn',
-    caption: 'The Dark Knight'
+    caption: 'Vintage Camera Film',
   },
   {
     id: 3,
     src: "/images/popcorn-movie.jpg",
-    altText: 'Camera Film',
-    caption: 'Lord of the Rings'
+    caption: 'Popcorn Forever',
   }
-];
+]
 
 const CarouselSlider = props => {
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [animate, setAnimate] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [animate, setAnimate] = useState(false)
 
   const next = () => {
-    if (animate) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-    setActiveIndex(nextIndex);
+    if (animate) return
+    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1
+    setActiveIndex(nextIndex)
   }
 
   const previous = () => {
-    if (animate) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-    setActiveIndex(nextIndex);
+    if (animate) return
+    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1
+    setActiveIndex(nextIndex)
   }
 
   const goToIndex = (newIndex) => {
-    if (animate) return;
-    setActiveIndex(newIndex);
+    if (animate) return
+    setActiveIndex(newIndex)
   }
 
-  const slides = items.map((item) => {
+  const slides = items.map(({id, src, caption}) => {
     return (
       <CarouselItem
         onExiting={() => setAnimate(true)}
         onExited={() => setAnimate(false)}
-        key={item.id}
+        key={id}
       >
-        <img src={item.src} alt={item.altText} />
-        {/* <CarouselCaption captionHeader={item.caption} captionText={item.altText} /> */}
+        <img src={src} alt={caption} />
+        {/* <CarouselCaption captionHeader={item.caption}  /> */}
       </CarouselItem>
-    );
-  });
+    )
+  })
 
   return (
     <Carousel
@@ -70,12 +67,12 @@ const CarouselSlider = props => {
       previous={previous}
       className='py-4'
     >
-      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-        {slides}
+      {/* <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} /> */}
+      {slides}
       <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
       <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
     </Carousel>
-  );
+  )
 }
 
 export default CarouselSlider

@@ -7,8 +7,13 @@ const BASE_URL = 'http://localhost:3000'
 // Actions
 
 export const getMovies = async () => {
-  const res = await axios.get(`${BASE_URL}/api/v1/movies`)
-  return res.data
+  try {
+    const res = await axios.get(`${BASE_URL}/api/v1/movies`)
+    return res.data
+  }
+  catch {
+    console.log(err => err) 
+  }
 }
 
 export const getMovieById = async id => {

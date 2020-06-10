@@ -27,11 +27,12 @@ const MovieCard = ({ movie }) => {
           <CardBody className="card-body">
             <h6>{releaseYear}</h6>
             <small className="text-muted">{genre}</small>
-            <h3 className="card-title">
+            <h4 className="card-title">
               <Link  href='/movies/[id]' as={`/movies/${id}`}>
                 <a>{name}</a>
               </Link>
-            </h3>
+            </h4>
+            <div>{genre}</div>
             <CardText className="card-text">{shortenText(description, 130)}</CardText>
             <Link  href='/movies/[id]' as={`/movies/${id}`}>
               <Button color="success">
